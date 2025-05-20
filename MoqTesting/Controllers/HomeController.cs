@@ -5,7 +5,7 @@ using MoqTesting.Services;
 
 namespace MoqTesting.Controllers;
 
-public class HomeController : Controller
+public class HomeController : ControllerBase
 {
     private readonly EmployeeService _employeeService;
 
@@ -33,7 +33,7 @@ public class HomeController : Controller
     {
         _employeeService.UpdateEmployee(id, newName, newDepartment);
         var employee = _employeeService.GetEmployeeById(id);
-        return View(employee);
+        return Ok(employee);
     }
 
     public IActionResult DeleteEmployee(int id)
